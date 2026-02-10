@@ -18,8 +18,8 @@ export const options = {
       maxVUs: 200,
       stages: [
         { target: 20, duration: '5s' },  // warm-up
-        { target: 100, duration: '20s' },  // spike
-        { target: 100, duration: '30s' },  // sustain
+        { target: 100, duration: '10s' },  // spike
+        { target: 100, duration: '10s' },  // sustain
         { target: 0, duration: '5s' },   // cool-down
       ],
     },
@@ -32,7 +32,7 @@ export const options = {
 };
 
 export default function () {
-  const url = 'http://localhost:8080/api/orders';
+  const url = 'http://localhost:8080/api/orders/with-headers';
 
   // 1️⃣ Randomized, realistic payload
   const quantity = Math.floor(Math.random() * 5) + 1;

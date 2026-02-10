@@ -18,6 +18,7 @@ public class MyProducerInterceptor implements ProducerInterceptor<String, OrderP
     @Override
     public ProducerRecord<String, OrderPlacedEvent> onSend(ProducerRecord<String, OrderPlacedEvent> record) {
         // Called before sending - can modify record
+        record.headers().add("custom", "my-interceptor".getBytes());
         log.info("Intercepting send - Topic: {}, Key: {}", record.topic(), record.key());
         
         // Add header
