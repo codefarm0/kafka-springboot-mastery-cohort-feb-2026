@@ -1,0 +1,24 @@
+https://debezium.io/documentation/reference/stable/tutorial.html
+
+
+docker run -it --rm -p 9092:9092 \
+  --name kafka --hostname kafka \
+  -e CLUSTER_ID=<5L6g3nShT-eMCtK--X86sw> \
+  -e NODE_ID=1 \
+  -e NODE_ROLE=combined \
+  -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka:9093 \
+  -e KAFKA_LISTENERS=PLAINTEXT://kafka:9092,CONTROLLER://kafka:9093 \
+  -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092 \
+  quay.io/debezium/kafka:3.3
+
+
+
+  $ docker run -it --rm --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=debezium -e MYSQL_USER=mysqluser -e MYSQL_PASSWORD=mysqlpw quay.io/debezium/example-mysql:3.3
+
+
+
+docker run -it --rm --name mysqlterm --link mysql mysql:8.2 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -umysqluser -p"mysqlpw"'
+
+
+
+docker run -it --rm --name connect -p 8083:8083 -e GROUP_ID=1 -e CONFIG_STORAGE_TOPIC=my_connect_configs -e OFFSET_STORAGE_TOPIC=my_connect_offsets -e STATUS_STORAGE_TOPIC=my_connect_statuses --link kafka:kafka --link mysql:mysql quay.io/debezium/connect:3.3
