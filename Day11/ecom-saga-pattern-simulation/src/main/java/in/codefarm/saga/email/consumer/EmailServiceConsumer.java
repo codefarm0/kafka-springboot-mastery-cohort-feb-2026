@@ -17,7 +17,7 @@ public class EmailServiceConsumer {
     
     private final JsonMapper jsonMapper;
     
-    public EmailServiceConsumer(@Qualifier("consumerJsonMapper") JsonMapper jsonMapper) {
+    public EmailServiceConsumer(JsonMapper jsonMapper) {
         this.jsonMapper = jsonMapper;
     }
     

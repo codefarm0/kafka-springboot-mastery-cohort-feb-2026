@@ -28,7 +28,7 @@ public class InventoryServiceConsumer {
     public InventoryServiceConsumer(
         InventoryService inventoryService,
         InventoryEventProducer inventoryEventProducer,
-        @Qualifier("consumerJsonMapper") JsonMapper jsonMapper
+       JsonMapper jsonMapper
     ) {
         this.inventoryService = inventoryService;
         this.inventoryEventProducer = inventoryEventProducer;

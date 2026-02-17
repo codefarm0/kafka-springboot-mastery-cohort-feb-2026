@@ -28,7 +28,7 @@ public class OrderServiceConsumer {
     public OrderServiceConsumer(
         OrderService orderService, 
         OrderEventProducer orderEventProducer,
-        @Qualifier("consumerJsonMapper") JsonMapper jsonMapper
+        JsonMapper jsonMapper
     ) {
         this.orderService = orderService;
         this.orderEventProducer = orderEventProducer;
